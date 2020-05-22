@@ -1,12 +1,14 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_bootstrap_components as dbc
+
 from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.graph_objs as go
 
-style = ['https://github.com/tcbegley/dash-bootstrap-css/blob/master/dist/darkly/bootstrap.css']
-app = dash.Dash(__name__,external_stylesheets=style)
+
+app = dash.Dash(__name__,external_stylesheets=[dbc.themes.CYBORG])
 
 #######
 # YOUR APP HERE 
@@ -27,12 +29,12 @@ app.layout = html.Div([
         src = "https://github.com/BrainhackMTL/school/blob/master/static/img/banners/bannerwide.jpg?raw=true"    
         ),
         html.Div([
-            dcc.Dropdown(
+            dbc.Dropdown(
                 id='xaxis-column',
                 options=[{'label': i, 'value': i} for i in available_indicators],
                 value='Fertility rate, total (births per woman)'
             ),
-            dcc.RadioItems(
+            dbc.RadioItems(
                 id='xaxis-type',
                 options=[{'label': i, 'value': i} for i in ['Linear', 'Log']],
                 value='Linear',
@@ -42,12 +44,12 @@ app.layout = html.Div([
         style={'width': '48%', 'display': 'inline-block'}),
 
         html.Div([
-            dcc.Dropdown(
+            dbc.Dropdown(
                 id='yaxis-column',
                 options=[{'label': i, 'value': i} for i in available_indicators],
                 value='Life expectancy at birth, total (years)'
             ),
-            dcc.RadioItems(
+            dbc.RadioItems(
                 id='yaxis-type',
                 options=[{'label': i, 'value': i} for i in ['Linear', 'Log']],
                 value='Linear',
