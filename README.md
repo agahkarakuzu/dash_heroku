@@ -6,7 +6,7 @@
 
 ### 3. [Generate an API key on your account settings](https://dashboard.heroku.com/account)
 
-### 4. [Create an encrypted secret for your repo](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `HEROKU_API`. 
+### 4. [Create an encrypted secret for your repo](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository) with the name `HEROKU_API` 
 
 ### 5. Do the following changes in the [GitHub Actions configuration](/.github/workflows/deploy.md):
 
