@@ -29,12 +29,12 @@ app.layout = html.Div([
         src = "https://github.com/BrainhackMTL/school/blob/master/static/img/banners/bannerwide.jpg?raw=true"    
         ),
         html.Div([
-            dbc.Dropdown(
+            dcc.Dropdown(
                 id='xaxis-column',
                 options=[{'label': i, 'value': i} for i in available_indicators],
                 value='Fertility rate, total (births per woman)'
             ),
-            dbc.RadioItems(
+            dcc.RadioItems(
                 id='xaxis-type',
                 options=[{'label': i, 'value': i} for i in ['Linear', 'Log']],
                 value='Linear',
@@ -44,12 +44,12 @@ app.layout = html.Div([
         style={'width': '48%', 'display': 'inline-block'}),
 
         html.Div([
-            dbc.Dropdown(
+            dcc.Dropdown(
                 id='yaxis-column',
                 options=[{'label': i, 'value': i} for i in available_indicators],
                 value='Life expectancy at birth, total (years)'
             ),
-            dbc.RadioItems(
+            dcc.RadioItems(
                 id='yaxis-type',
                 options=[{'label': i, 'value': i} for i in ['Linear', 'Log']],
                 value='Linear',
