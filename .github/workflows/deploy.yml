@@ -15,5 +15,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API}}
           heroku_app_name: "dash-brainhack" #Must be unique in Heroku
           heroku_email: "agahkarakuzu@gmail.com"
-          usedocker: true
-          docker_heroku_process_type: "web"
