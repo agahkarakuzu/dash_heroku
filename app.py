@@ -15,14 +15,15 @@ import dash_html_components as html
 # Setup the app
 # Make sure not to change this file name or the variable names below,
 # the template is configured to execute 'server' on 'app.py'
-server = flask.Flask(__name__)
-server.secret_key = os.environ.get('secret_key', str(randint(0, 1000000)))
-app = dash.Dash(__name__, server=server)
 
+app = dash.Dash(__name__, server=server)
+port = int(os.environ.get("PORT", 5000))
 
 # Put your Dash code here
 
 
 # Run the Dash app
 if __name__ == '__main__':
-    app.server.run(debug=True, threaded=True)
+    app.run_server(debug=False,
+                   host="0.0.0.0",
+                   port=port)
