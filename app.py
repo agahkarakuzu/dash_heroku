@@ -1,16 +1,7 @@
-# Import required libraries
-import os
-from random import randint
-
-import plotly.plotly as py
-from plotly.graph_objs import *
-
-import flask
 import dash
-from dash.dependencies import Input, Output, State, Event
 import dash_core_components as dcc
 import dash_html_components as html
-
+from dash.dependencies import Input, Output
 
 # Setup the app
 # Make sure not to change this file name or the variable names below,
