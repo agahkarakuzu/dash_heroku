@@ -2,6 +2,8 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import pandas as pd
+import plotly.graph_objs as go
 
 
 app = dash.Dash(__name__)
@@ -20,7 +22,10 @@ available_indicators = df['Indicator Name'].unique()
 
 app.layout = html.Div([
     html.Div([
-
+        html.Img(
+        id="Header",
+        src = "https://www.brainhack.org/assets/images/brainhack_header.png"    
+        ),
         html.Div([
             dcc.Dropdown(
                 id='xaxis-column',
