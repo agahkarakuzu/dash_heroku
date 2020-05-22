@@ -7,4 +7,5 @@ RUN mkdir /myworkdir
 WORKDIR /myworkdir
 COPY ./ ./
 
+CMD gunicorn --bind 0.0.0.0:5000 wsgi
 CMD ["python", "app.py"]
