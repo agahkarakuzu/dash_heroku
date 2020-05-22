@@ -1,6 +1,8 @@
-gunicorn
-plotly
-dash
+gunicorn==20.0.4
+plotly==4.5.4
+dash==1.8.0
 dash-renderer
 dash-html-components
 dash-core-components
+numpy==1.18.1
+pandas==1.0.1
