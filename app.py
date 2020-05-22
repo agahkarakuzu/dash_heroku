@@ -3,34 +3,107 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-# Setup the app
-# Make sure not to change this file name or the variable names below,
-# the template is configured to execute 'server' on 'app.py'
 
 app = dash.Dash(__name__)
 
+#######
+# YOUR APP HERE 
+#######
+
+df = pd.read_csv(
+    'https://gist.githubusercontent.com/chriddyp/'
+    'cb5392c35661370d95f300086accea51/raw/'
+    '8e0768211f6b747c0db42a9ce9a0937dafcbd8b2/'
+    'indicators.csv')
+
+available_indicators = df['Indicator Name'].unique()
 
 app.layout = html.Div([
-    dcc.Input(id='my-id', value='initial value', type='text'),
-    html.Div(id='my-div')
+    html.Div([
+
+        html.Div([
+            dcc.Dropdown(
+                id='xaxis-column',
+                options=[{'label': i, 'value': i} for i in available_indicators],
+                value='Fertility rate, total (births per woman)'
+            ),
+            dcc.RadioItems(
+                id='xaxis-type',
+                options=[{'label': i, 'value': i} for i in ['Linear', 'Log']],
+                value='Linear',
+                labelStyle={'display': 'inline-block'}
+            )
+        ],
+        style={'width': '48%', 'display': 'inline-block'}),
+
+        html.Div([
+            dcc.Dropdown(
+                id='yaxis-column',
+                options=[{'label': i, 'value': i} for i in available_indicators],
+                value='Life expectancy at birth, total (years)'
+            ),
+            dcc.RadioItems(
+                id='yaxis-type',
+                options=[{'label': i, 'value': i} for i in ['Linear', 'Log']],
+                value='Linear',
+                labelStyle={'display': 'inline-block'}
+            )
+        ],style={'width': '48%', 'float': 'right', 'display': 'inline-block'})
+    ]),
+
+    dcc.Graph(id='indicator-graphic'),
+
+    dcc.Slider(
+        id='year--slider',
+        min=df['Year'].min(),
+        max=df['Year'].max(),
+        value=df['Year'].max(),
+        marks={str(year): str(year) for year in df['Year'].unique()},
+        step=None
+    )
 ])
 
-# Dash uses data driven callbacks via decorators 
-# Inputs and outputs are defined by this decorator 
-
-# The following decorator simply states that children property of the my-div component (which is just a Div)
-# will have the value inputed by my-id component, which is a textbox. 
-
-# The relationship between input and the output is determined by update_output_div function.
-
-
 @app.callback(
-    Output(component_id='my-div', component_property='children'),
-    [Input(component_id='my-id', component_property='value')]
-)
-def update_output_div(input_value):
-    return 'You\'ve entered "{}"'.format(input_value)
+    Output('indicator-graphic', 'figure'),
+    [Input('xaxis-column', 'value'),
+     Input('yaxis-column', 'value'),
+     Input('xaxis-type', 'value'),
+     Input('yaxis-type', 'value'),
+     Input('year--slider', 'value')])
+def update_graph(xaxis_column_name, yaxis_column_name,
+                 xaxis_type, yaxis_type,
+                 year_value):
+    dff = df[df['Year'] == year_value]
 
+    return {
+        'data': [go.Scatter(
+            x=dff[dff['Indicator Name'] == xaxis_column_name]['Value'],
+            y=dff[dff['Indicator Name'] == yaxis_column_name]['Value'],
+            text=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'],
+            mode='markers',
+            marker={
+                'size': 15,
+                'opacity': 0.5,
+                'line': {'width': 0.5, 'color': 'white'}
+            }
+        )],
+        'layout': go.Layout(
+            xaxis={
+                'title': xaxis_column_name,
+                'type': 'linear' if xaxis_type == 'Linear' else 'log'
+            },
+            yaxis={
+                'title': yaxis_column_name,
+                'type': 'linear' if yaxis_type == 'Linear' else 'log'
+            },
+            margin={'l': 40, 'b': 40, 't': 10, 'r': 0},
+            hovermode='closest'
+        )
+    }
+
+#########################
+# RUN THE APP (Do not modify the following, unless you know what you are doing :) )
+#########################
 server = app.server
 app.config.suppress_callback_exceptions = True
 
