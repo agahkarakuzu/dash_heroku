@@ -20,7 +20,7 @@ df = pd.read_csv(
 
 available_indicators = df['Indicator Name'].unique()
 
-app.layout = html.Div(className="dash-bootstrap",[
+app.layout = html.Div([
     html.Div([
         html.Img(
         id="Header",
