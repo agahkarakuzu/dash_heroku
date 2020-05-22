@@ -5,8 +5,8 @@ from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.graph_objs as go
 
-
-app = dash.Dash(__name__)
+style = ['https://github.com/tcbegley/dash-bootstrap-css/blob/master/dist/darkly/bootstrap.css']
+app = dash.Dash(__name__,external_stylesheets=style)
 
 #######
 # YOUR APP HERE 
@@ -20,11 +20,11 @@ df = pd.read_csv(
 
 available_indicators = df['Indicator Name'].unique()
 
-app.layout = html.Div([
+app.layout = html.Div(className="dash-bootstrap",[
     html.Div([
         html.Img(
         id="Header",
-        src = "https://www.brainhack.org/assets/images/brainhack_header.png"    
+        src = "https://github.com/BrainhackMTL/school/blob/master/static/img/banners/bannerwide.jpg?raw=true"    
         ),
         html.Div([
             dcc.Dropdown(
