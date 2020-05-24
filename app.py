@@ -92,6 +92,8 @@ def update_graph(xaxis_column_name, yaxis_column_name,
             }
         )],
         'layout': go.Layout(
+            width: 1200,
+            height = 600,
             xaxis={
                 'title': xaxis_column_name,
                 'type': 'linear' if xaxis_type == 'Linear' else 'log'
