@@ -30,8 +30,10 @@
 -          heroku_app_name: "dash-brainhack"
 +          heroku_app_name: "your-app-name"
 -          heroku_email: "agahkarakuzu@gmail.com"
-+          heroku_email: "your-heroku-email@xyz.com"
++          heroku_email: "your-heroku-email@xyz.com" 
 ```
+
+⚠️ `heroku_app_name` must be a unique name. If there exists a herokuapp with that name, the deployment will fail. You can check it [here](https://dashboard.heroku.com/new-app). 
 
 ## That's it! 
 
