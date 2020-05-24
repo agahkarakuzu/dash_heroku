@@ -55,7 +55,7 @@ app.layout = html.Div([
         ],style={'width': '48%', 'float': 'right', 'display': 'inline-block'})
     ]),
 
-    dcc.Graph(id='indicator-graphic'),
+    dcc.Graph(id='indicator-graphic',style={'width': '100%', 'height': '600px'}),
 
     dcc.Slider(
         id='year--slider',
@@ -92,8 +92,6 @@ def update_graph(xaxis_column_name, yaxis_column_name,
             }
         )],
         'layout': go.Layout(
-            width: 1200,
-            height = 600,
             xaxis={
                 'title': xaxis_column_name,
                 'type': 'linear' if xaxis_type == 'Linear' else 'log'
