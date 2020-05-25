@@ -1,4 +1,4 @@
-## Deploy your dash app to Heroku in 5 steps :rocket:
+## Deploy your `Plotly-Dash` app to Heroku in 5 steps :rocket:
 
 ### 1. Fork this repository 
 
@@ -41,9 +41,9 @@ Check the `Actions` tab of your repository, if the run is successful, your app w
 
 https://your-app-name.herokuapp.com
 
-You can simply modify `app.py` to contain your dash app. Each time you push a commit to the `master`, action will be triggered to deploy the new version. 
+Each time you push a commit to the `master`, action will be triggered to deploy the new version. 
 
-Note: Do not push commits to `master` one after another too frequently, it may break the deployment. 
+**Note:** Do not push commits to `master` one after another too frequently, it may break the deployment. 
 
 ## How to develop and debug your Dash app? 
 
@@ -52,7 +52,7 @@ Assuming that you have a the [`datvis36` conda environment](https://github.com/a
 1. Clone your (forked) repository to your computer
 
 ```
-git clone https://github.com/your_github_handle/dash_heroku.git
+git clone https://github.com/your-github-handle/dash_heroku.git
 ```
 
 2. Activate `datvis36` environment and navigate into the `dash_heroku`
@@ -93,7 +93,7 @@ git push
 
 If your push refers to `master`, `Github Actions` will be triggered and deploy the latest version of your app to Heroku! 
 
-**Use GitHub Actions fairly**. It is not only a bad development practice to modify your `app.py` on GitHub editor and see if it works on production (https://your-heroku-app-name.herokuapp.com) each time you commit, but also a wasteful use of public compute resources.
+**Use GitHub Actions fairly**. It is not only a bad development practice to modify your `app.py` on GitHub editor and see if it works on production (https://your-app-name.herokuapp.com) each time you commit, but also a wasteful use of public compute resources.
 
 **See the details** about [free dyno hours](https://devcenter.heroku.com/articles/free-dyno-hours) on your Heroku account.
 
