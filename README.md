@@ -47,7 +47,6 @@ Each time you push a commit to the `master`, action will be triggered to deploy 
 
 | :exclamation:  **Warning**|
 |---------------------------------------|
-
 Do not push commits to `master` one after another too frequently, it may break the deployment. 
 
 ## How to develop and debug your Dash app? 
