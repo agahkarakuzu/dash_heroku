@@ -104,7 +104,7 @@ It is not only a bad development practice to modify your `app.py` on GitHub edit
 
 | ⏱ **Heroku gives you 550hrs per month for free**|
 |----------------------------------------------------|
-**See the details** about [free dyno hours](https://devcenter.heroku.com/articles/free-dyno-hours) on your Heroku account.
+Quite generous, is not it! When your app does not receive web traffic for 30 minutes, it sleeps. If a sleeping web dyno receives web traffic, it will become active again after a short delay. Free web dynos do not consume free dyno hours while sleeping 🎉. You can find further details about free dyno hours [here](https://devcenter.heroku.com/articles/free-dyno-hours).
 
 ## Multi-page Dash apps are possible! 
 
