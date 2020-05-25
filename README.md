@@ -33,7 +33,9 @@
 +          heroku_email: "your-heroku-email@xyz.com" 
 ```
 
-⚠️ `heroku_app_name` must be a unique name. If there exists a herokuapp with that name, the deployment will fail. You can check it [here](https://dashboard.heroku.com/new-app). 
+| :exclamation:  **Warning**|
+|---------------------------------------|
+Your `heroku_app_name` must be a unique name. If there exists a herokuapp with that name, the deployment will fail. You can check for availability [here](https://dashboard.heroku.com/new-app). 
 
 ## That's it! 
 
@@ -43,7 +45,10 @@ https://your-app-name.herokuapp.com
 
 Each time you push a commit to the `master`, action will be triggered to deploy the new version. 
 
-**Note:** Do not push commits to `master` one after another too frequently, it may break the deployment. 
+| :exclamation:  **Warning**|
+|---------------------------------------|
+
+Do not push commits to `master` one after another too frequently, it may break the deployment. 
 
 ## How to develop and debug your Dash app? 
 
@@ -93,8 +98,12 @@ git push
 
 If your push refers to `master`, `Github Actions` will be triggered and deploy the latest version of your app to Heroku! 
 
-**Use GitHub Actions fairly**. It is not only a bad development practice to modify your `app.py` on GitHub editor and see if it works on production (https://your-app-name.herokuapp.com) each time you commit, but also a wasteful use of public compute resources.
+| :point_up: **Please use GitHub Actions fairly**|
+|--------------------------------------------------|
+It is not only a bad development practice to modify your `app.py` on GitHub editor and see if it works on production (https://your-app-name.herokuapp.com) each time you commit, but also a wasteful use of public compute resources.
 
+| ⏱ **Heroku gives you 550hrs per month for free**|
+|----------------------------------------------------|
 **See the details** about [free dyno hours](https://devcenter.heroku.com/articles/free-dyno-hours) on your Heroku account.
 
 ## Multi-page Dash apps are possible! 
